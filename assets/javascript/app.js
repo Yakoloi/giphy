@@ -6,27 +6,19 @@ $(document).ready(function () {
         $("#animalButtons").empty();
 
         for (var i = 0; i < animalArray.length; i++) {
-
             var button = $("<button>");
             button.addClass("animal");
             button.attr("data-name", animalArray[i]);
-
             button.text(animalArray[i]);
-
             $("#animalButtons").append(button);
         };
-
     };
-
     $("#addAnimal").on("click", function (event) {
 
         event.preventDefault();
         var animal = $("#animal-input").val().trim();
         animalArray.push(animal);
         renderButtons();
-
-        console.log(animal)
-
 
         $(".animal").on("click", function () {
             var animal = $(this).attr("data-name");
@@ -39,20 +31,16 @@ $(document).ready(function () {
                 })
                 .done(function (response) {
                     var results = response.data;
-                    console.log("response" + response)
 
                     for (var i = 0; i < results.length; i++) {
                         var gifDiv = $("<div class='item'>");
-
                         var p = $("<p>").text("Rating: " + results[i].rating);
-
                         var animalImage = $("<img>");
                         animalImage.attr("data-state", "animate")
                         animalImage.attr("data-still", results[i].images.fixed_height_still.url);
                         animalImage.attr("data-animate", results[i].images.fixed_height.url);
                         animalImage.attr("src", results[i].images.fixed_height.url);
                         animalImage.attr("id", "gif");
-
                         gifDiv.prepend(p);
                         gifDiv.prepend(animalImage);
 
