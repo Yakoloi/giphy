@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     var animalArray = [];
+
     function renderButtons() {
         $("#animalButtons").empty();
 
@@ -43,9 +44,7 @@ $(document).ready(function () {
                     for (var i = 0; i < results.length; i++) {
                         var gifDiv = $("<div class='item'>");
 
-                        var rating = results[i].rating;
-
-                        var p = $("<p>").text("Rating: " + rating);
+                        var p = $("<p>").text("Rating: " + results[i].rating);
 
                         var animalImage = $("<img>");
                         animalImage.attr("data-state", "animate")
